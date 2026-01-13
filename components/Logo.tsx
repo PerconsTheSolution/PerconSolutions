@@ -16,8 +16,6 @@ export const Logo: React.FC<LogoProps> = ({ className = "w-12 h-12" }) => {
       <path 
         d="M100 30 L170 85 L170 175 L30 175 L30 85 Z" 
         fill="#22d3ee"
-        strokeLinecap="round" 
-        strokeLinejoin="round"
       />
     </svg>
   );
