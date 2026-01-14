@@ -8,9 +8,11 @@ import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-docu
 import { Resource } from '@opentelemetry/resources';
 import { ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION } from '@opentelemetry/semantic-conventions';
 
+const serviceVersion = import.meta.env.VITE_APP_VERSION || '0.0.0';
+
 const resource = new Resource({
   [ATTR_SERVICE_NAME]: 'percon-solutions',
-  [ATTR_SERVICE_VERSION]: '0.0.0',
+  [ATTR_SERVICE_VERSION]: serviceVersion,
 });
 
 const provider = new WebTracerProvider({ resource });
@@ -26,11 +28,14 @@ provider.register({
   contextManager: new ZoneContextManager(),
 });
 
+const propagateTraceHeaderCorsUrls =
+  typeof window !== 'undefined' ? [window.location.origin] : [];
+
 // Register auto-instrumentations
 registerInstrumentations({
   instrumentations: [
     new FetchInstrumentation({
-      propagateTraceHeaderCorsUrls: [/.*/],
+      propagateTraceHeaderCorsUrls,
       clearTimingResources: true,
     }),
     new DocumentLoadInstrumentation(),

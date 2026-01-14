@@ -121,9 +121,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
               </a>
             ))}
             
-            <button className="px-5 py-2 rounded-full border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all duration-300 text-sm font-semibold shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+            <a 
+              href="https://calendly.com/your-booking-link" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-5 py-2 rounded-full border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all duration-300 text-sm font-semibold shadow-[0_0_15px_rgba(6,182,212,0.3)]"
+            >
               Get Started
-            </button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -178,9 +183,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                 {link.name}
               </a>
             ))}
-            <button className="w-full mt-4 px-5 py-3 rounded-lg bg-cyan-600 text-white font-semibold">
+            <a 
+              href="https://calendly.com/your-booking-link" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block w-full mt-4 px-5 py-3 rounded-lg bg-cyan-600 text-white font-semibold text-center"
+            >
               Get Started
-            </button>
+            </a>
           </div>
         </div>
       )}
