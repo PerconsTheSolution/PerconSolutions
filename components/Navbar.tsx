@@ -64,10 +64,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div 
-            className="flex items-center cursor-pointer" 
+            className="cursor-pointer" 
             onClick={() => handlePageChange('home')}
           >
-            <Logo className="h-10" />
+            <Logo className="h-12 w-auto" />
           </div>
 
           {/* Desktop Nav */}

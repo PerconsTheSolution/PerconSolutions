@@ -4,12 +4,13 @@ interface LogoProps {
   className?: string;
 }
 
-export const Logo: React.FC<LogoProps> = ({ className = "h-12" }) => {
+export const Logo: React.FC<LogoProps> = ({ className = "" }) => {
   return (
     <img 
-      src="/assets/Images/Logo with Text_Website Horizontal.svg"
+      src="/assets/Images/Logo with Text_Horizontal.png"
       alt="Percon Solutions Logo"
-      className={className}
+      className={className || "h-12 w-auto"}
+      style={{ minWidth: '200px' }}
     />
   );
 };
