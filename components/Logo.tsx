@@ -9,8 +9,7 @@ export const Logo: React.FC<LogoProps> = ({ className = "" }) => {
     <img 
       src="/assets/Images/Logo with Text_Horizontal.png"
       alt="Percon Solutions Logo"
-      className={className || "h-12 w-auto"}
-      style={{ minWidth: '200px' }}
+      className={`min-w-[200px] ${className || "h-12 w-auto"}`}
     />
   );
 };
