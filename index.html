@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PerCon Solutions</title>
+    <link rel="icon" type="image/png" href="/Images/favicon.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
@@ -33,10 +35,10 @@
       body { margin: 0; padding: 0; background-color: #020617; color: white; }
     </style>
 
-
-  <script type="module" crossorigin src="/assets/index-fT3ROlv5.js"></script>
-</head>
-  <body>
+    <!-- Vite dev & build entry point -->
+    <script type="module" src="/index.tsx"></script>
+  </head>
+  <body class="dark">
     <div id="root"></div>
 </body>
 </html>

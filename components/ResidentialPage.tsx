@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Wifi, Home, Laptop, Smartphone, Lock, Activity } from 'lucide-react';
 
-export const ResidentialPage: React.FC = () => {
+interface ResidentialPageProps {
+  onOpenBooking: () => void;
+}
+
+export const ResidentialPage: React.FC<ResidentialPageProps> = ({ onOpenBooking }) => {
+  useEffect(() => {
+    document.title = 'Residential IT Services | Smart Home Solutions | PerCon Solutions';
+  }, []);
   return (
     <div className="pt-24 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -20,7 +27,10 @@ export const ResidentialPage: React.FC = () => {
               Experience the true potential of your home technology. From eliminating Wi-Fi dead zones to securing your family's personal data, we bring enterprise-grade support to your doorstep.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="px-6 py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-colors">
+              <button 
+                onClick={onOpenBooking}
+                className="px-6 py-3 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-200 transition-colors"
+              >
                 Book a Technician
               </button>
               <button className="px-6 py-3 border border-slate-600 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors">

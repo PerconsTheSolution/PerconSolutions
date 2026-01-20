@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Server, ShieldCheck, BarChart3, Clock, Database, Globe } from 'lucide-react';
 
 export const SmallBusinessPage: React.FC = () => {
+  useEffect(() => {
+    document.title = 'Small Business & Enterprise IT Solutions | PerCon Solutions';
+  }, []);
   const features = [
     {
       title: 'Managed IT Services',

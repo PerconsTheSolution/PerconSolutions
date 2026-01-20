@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram } from 'lucide-react';
 import { Logo } from './Logo';
 import { sendEmailViaWeb3Forms } from '../src/emailService';
 
-export const Contact: React.FC = () => {
+interface ContactProps {
+  onOpenBooking: () => void;
+}
+
+export const Contact: React.FC<ContactProps> = ({ onOpenBooking }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -166,7 +170,7 @@ export const Contact: React.FC = () => {
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Logo className="w-10 h-10" />
+              <Logo iconOnly className="w-10 h-10" />
               <span className="text-xl font-bold text-white">
                 PerCon<span className="text-cyan-400">Solutions</span>
               </span>
@@ -211,29 +215,38 @@ export const Contact: React.FC = () => {
             <h3 className="text-white font-semibold mb-4 text-lg">Stay Connected</h3>
             <div className="flex space-x-4 mb-6">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/percon-solutions-usa"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="p-2 bg-slate-900 rounded-full text-slate-400 hover:text-cyan-400 hover:bg-slate-800 transition-all"
               >
                 <Linkedin size={20} />
               </a>
               <a
-                href="#"
-                aria-label="Twitter"
+                href="https://www.instagram.com/perconsolutionsllc"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="p-2 bg-slate-900 rounded-full text-slate-400 hover:text-cyan-400 hover:bg-slate-800 transition-all"
               >
-                <Twitter size={20} />
+                <Instagram size={20} />
               </a>
               <a
-                href="#"
+                href="https://github.com/perconsolutions"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="GitHub"
                 className="p-2 bg-slate-900 rounded-full text-slate-400 hover:text-cyan-400 hover:bg-slate-800 transition-all"
               >
                 <Github size={20} />
               </a>
             </div>
-            <button className="w-full px-4 py-2 bg-cyan-900/30 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500 hover:text-white rounded-md transition-all text-sm font-medium">
-              Schedule Consultation
+            <button 
+              onClick={onOpenBooking}
+              className="w-full px-4 py-2 bg-cyan-900/30 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500 hover:text-white rounded-md transition-all text-sm font-medium"
+            >
+              Free Consultation
             </button>
           </div>
         </div>

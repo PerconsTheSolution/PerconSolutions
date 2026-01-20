@@ -68,29 +68,34 @@ export const sendEmailViaFormspree = async (formData: EmailFormData): Promise<vo
 };
 
 // Option 3: Using Web3Forms (Alternative - free, simple)
-export const sendEmailViaWeb3Forms = async (formData: EmailFormData): Promise<void> => {
-  const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY'; // Get from web3forms.com
+export const sendEmailViaWeb3Forms = async (emailData: EmailFormData): Promise<void> => {
+  const WEB3FORMS_KEY = 'f321cb06-aa79-4aed-9971-c3a5e373c0d8';
+  
+  console.log('Attempting to send email with Web3Forms...', emailData);
   
   try {
+    // Use FormData instead of JSON for better compatibility
+    const formData = new FormData();
+    formData.append('access_key', WEB3FORMS_KEY);
+    formData.append('name', emailData.name);
+    formData.append('email', emailData.email);
+    formData.append('subject', emailData.subject);
+    formData.append('message', emailData.message);
+    
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_KEY,
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message
-      })
+      body: formData
     });
 
+    console.log('Web3Forms response status:', response.status);
     const result = await response.json();
+    console.log('Web3Forms result:', result);
     
     if (!result.success) {
       throw new Error(result.message || 'Failed to send email');
     }
+    
+    console.log('Email sent successfully!');
   } catch (error) {
     console.error('Email send failed:', error);
     throw new Error('Failed to send email. Please try again.');
